@@ -11,7 +11,7 @@ This project examines variation in recorded autism spectrum disorder (ASD) preva
 - Individual-level records are **restricted** and are not distributed in this repository.
 - The precise geographic jurisdiction, data custodian, and case-ascertainment details should be confirmed from the original data-use documentation before citing this analysis.
 
-**Interpretation:** Recorded service-system ASD prevalence is not necessarily equivalent to population-wide ASD prevalence; differences in access, identification, and enrollment may affect comparisons.
+**Interpretation:** The current preparation script codes a missing `aut_levl` value as 0 (non-ASD). This assumes that absence of a DDS autism designation is equivalent to being a noncase; this ascertainment assumption requires verification against data documentation. Recorded service-system ASD prevalence is not necessarily equivalent to population-wide ASD prevalence; differences in access, identification, and enrollment may affect comparisons.
 
 ## Methods
 1. Construct the ASD indicator and extract birth year from linked records.
@@ -49,11 +49,11 @@ data/
 
 ## Reproducibility
 1. Open the project in **R** and install the packages referenced in `scripts/01_setup_packages.R`.
-2. Set the local restricted-data input path in `scripts/02_data_preparation.R` to a permitted copy of the linked dataset.
+2. Configure the authorized input CSV with `Sys.setenv(ASD_DATA_PATH = "C:/path/to/asd_newvar_merged.csv")` (or set the `ASD_DATA_PATH` environment variable before launching R). The input file is not bundled.
 3. Execute scripts `01` through `05` in numerical order, preferably in the same R session.
 4. Check output paths before running: `05_regression_models.R` writes `model_results.docx` to the working directory, and existing plots may need to be saved explicitly.
 
-**Code note:** In `04_trend_analysis.R`, the optional plot subtitle references `ptrend$p_text`, a column not created in the shown script. Create/formulate that label before running the final faceted plot. This does not affect the preceding trend model calculations.
+**Code maintenance:** The data path is now configurable via `ASD_DATA_PATH`, and the trend-analysis script explicitly creates `p_text` before adding plot subtitles. These changes have not been executed against restricted data in this environment.
 
 ## Limitations
 Observational prevalence comparisons do not demonstrate causal subgroup effects. Birth-cohort follow-up and ascertainment, service access, subgroup sample sizes, and unmeasured characteristics may affect recorded prevalence and trends. Restricted source data prevents fully independent reproduction without authorized access.
