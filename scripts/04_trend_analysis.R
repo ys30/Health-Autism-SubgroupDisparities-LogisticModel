@@ -53,7 +53,11 @@ ptrend <- df |>
 ptrend
 
 # add p-trend to subtitle：
-subtitle_text <- ptrend$p_text |> paste(collapse = "   |   ")
+ptrend <- ptrend |>
+  mutate(p_text = sprintf("%s: p-trend = %s",
+                          Race_Label,
+                          ifelse(p_trend < 0.001, "<0.001", sprintf("%.3f", p_trend))))
+subtitle_text <- paste(ptrend$p_text, collapse = "   |   ")
 
 ggplot(trend, aes(x = Year, y = Prev, color = Race_Label)) +
   geom_ribbon(aes(ymin = CI_low, ymax = CI_high, fill = Race_Label),
