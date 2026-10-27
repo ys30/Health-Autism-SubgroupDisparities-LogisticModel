@@ -1,4 +1,4 @@
-# Autism Prevalence Disparities Among Asian American Subgroups (2007–2015 Birth Cohorts)
+# Autism Prevalence Disparities Among Asian American Subgroups in California (2007–2015 Birth Cohorts)
 
 ## Overview
 This project examines variation in recorded autism spectrum disorder (ASD) prevalence across Asian American subgroups and birth cohorts from 2007 through 2015. It combines descriptive prevalence estimates, subgroup-specific temporal trends, and multivariable logistic regression.
@@ -6,10 +6,10 @@ This project examines variation in recorded autism spectrum disorder (ASD) preva
 **Research question:** How does recorded ASD prevalence differ between Asian American subgroups, and how does it change across birth cohorts?
 
 ## Data and outcome
-- Linked birth records and developmental-services (DDS) records; ASD cases are identified from a recorded DDS autism designation.
+- California birth records (2007–2015) linked to California Department of Developmental Services (DDS) records; ASD cases are identified using a DDS autism designation.
 - Subgroups include Chinese, Japanese, Korean, Vietnamese, Cambodian, Thai, Laotian, Hmong, Indian, Filipino, and other classifications represented in the source data.
 - Individual-level records are **restricted** and are not distributed in this repository.
-- The precise geographic jurisdiction, data custodian, and case-ascertainment details should be confirmed from the original data-use documentation before citing this analysis.
+- The source dataset is described in the project's reference material; the precise linkage, follow-up, and case-ascertainment procedures should be checked against original data documentation before formal citation. The PDF currently under `documents/` concerns cerebral palsy, so it should not be treated as validation of the ASD-specific dataset.
 
 **Interpretation:** The current preparation script codes a missing `aut_levl` value as 0 (non-ASD). This assumes that absence of a DDS autism designation is equivalent to being a noncase; this ascertainment assumption requires verification against data documentation. Recorded service-system ASD prevalence is not necessarily equivalent to population-wide ASD prevalence; differences in access, identification, and enrollment may affect comparisons.
 
@@ -29,7 +29,7 @@ This project examines variation in recorded autism spectrum disorder (ASD) preva
 | Chinese | Approximately 1.0% to 0.6–0.7% over the reported period | p < 0.001 |
 | Korean | No statistically significant linear trend at the 0.05 threshold | p = 0.063 |
 
-The reported figures are descriptive and approximate. The figure below illustrates selected subgroup trends; the regression scripts generate adjusted odds ratios, but numerical Model B estimates are not asserted here without a verified exported model table.
+The reported figures are descriptive and approximate. The figure below illustrates selected subgroup trends; the regression scripts generate adjusted odds ratios, but numerical Model B estimates are not asserted here without a verified exported model table. **Model B subgroup ORs (95% CIs): pending verification from analysis output.**
 
 ![ASD prevalence by birth cohort](results/ASD%20prevalence%20trends.png)
 
