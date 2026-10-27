@@ -1,6 +1,12 @@
 # Read dataset and standardize variable names
 
-df <- read_csv("C:/Users/ariel/Desktop/20260217_R/asd_newvar_merged.csv") |>
+# Set ASD_DATA_PATH to the authorized restricted CSV file before running.
+# Example: Sys.setenv(ASD_DATA_PATH = "C:/path/to/asd_newvar_merged.csv")
+data_path <- Sys.getenv("ASD_DATA_PATH", unset = "")
+if (!nzchar(data_path) || !file.exists(data_path)) {
+  stop("Set ASD_DATA_PATH to an existing, authorized restricted input CSV file.")
+}
+df <- read_csv(data_path) |>
   janitor::clean_names()
 
 glimpse(df)
